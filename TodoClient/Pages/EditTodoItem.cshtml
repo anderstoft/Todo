@@ -1,0 +1,24 @@
+﻿@page "{id?}"
+@model EditTodoItemModel
+@using (Html.BeginForm("EditTodoItem", "EditTodoItem", FormMethod.Post))
+{
+
+<div asp-validation-summary="All"></div>
+@*<div class="form-group">
+    @Html.LabelFor(x => x.TodoItem.Name, new { @class = "h5" })
+    @Html.EditorFor(x => Model.TodoItem.Name)
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.TodoItem.IsComplete, new { @class = "h5" })
+    @Html.CheckBoxFor(x => Model.TodoItem.IsComplete)
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.TodoItem.User, new { @class = "h5" })
+    @Html.LabelFor(x => x.TodoItem.User.FirstName, new { @class = "h5" })
+    @Html.EditorFor(x => Model.TodoItem.User.FirstName)
+    @Html.LabelFor(x => x.TodoItem.User.LastName, new { @class = "h5" })
+    @Html.EditorFor(x => Model.TodoItem.User.LastName)
+</div>*@
+    @await Component.InvokeAsync("EditTodoItem", new { todoItem = @Model.TodoItem })
+<input class="btn btn-success" id="btnSave" type="submit" asp-page-handler="SaveTodo" value="Gem" />
+}

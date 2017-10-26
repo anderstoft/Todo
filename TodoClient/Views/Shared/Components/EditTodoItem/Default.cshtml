@@ -1,0 +1,23 @@
+﻿@model Todo.Model.TodoItem
+
+@if (Model.Id > 0)
+{
+    <input class="form-control" type="hidden" asp-for="@Model.Id">
+    if (Model.User != null && Model.User.Id > 0)
+    {
+        <input class="form-control" type="hidden" asp-for="@Model.User.Id">
+    }
+}
+
+<div class="form-group">
+    @Html.EditorFor(x => Model.Name)
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.IsComplete, new { @class = "label-grey" })
+    @Html.CheckBoxFor(x => Model.IsComplete)
+</div>
+@Html.LabelFor(x => x.User, new { @class = "label-grey h4" })
+<div class="form-group">
+    @Html.EditorFor(x => Model.User.FirstName)
+    @Html.EditorFor(x => Model.User.LastName)
+</div>
